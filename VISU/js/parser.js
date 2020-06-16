@@ -76,6 +76,16 @@ function parser(){
 			var poster  = creerPoster(nom,largeur,hauteur,url) ;  
 			enregistrerDansAnnuaire(nom, poster) ; 
 		} else
+		if (_obj.type == "cube") {
+			var materiau  = chercherDansAnnuaire(params.materiau) || materiauBlanc ;
+			createdObject = creerCube(nom,
+								params.largeur,
+								params.hauteur,
+								params.epaisseur,
+								materiau
+								);
+			enregistrerDansAnnuaire(nom, cube) ;   
+		} else
 		if(_obj.type == "texte"){
 			var largeur = params.largeur ;
 			var hauteur = params.hauteur ; 

@@ -84,6 +84,12 @@ function creerText(description,largeur,hauteur){
     return mesh;
 }
 
+function creerCube(nom,largeur,hauteur,epaisseur, materiau){
+	var geo  = new THREE.BoxGeometry(largeur, hauteur, epaisseur) ; 
+	var mesh = new THREE.Mesh(geo, materiau) ; 
+	mesh.name = nom ; 
+	return mesh ;  
+}
 
 
 
