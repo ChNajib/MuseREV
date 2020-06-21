@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Activités three.js</title>
+    <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+</style></head>
+
+<body>
+
+    <div id="blocker">
+
+        <div id="instructions">
+            <span style="font-size:36px">Click to play</span>
+            <br /><br /> Move: ZQSD<br /> Look: MOUSE
+        </div>
+
+    </div>
+    <div id="info">Description</div>
+	<div id="nearbyObjects"></div>
+    <script src="lib/three.min.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/controleur.js"></script>
+    <script src="js/DisplayManager.js"></script>
+    <script src="lib/OBJLoader.js"></script>
+    <script src="js/updater.js"></script>
+    <script src="index.js"></script>
+    <script>
+        init();
+        creerScene();
+        animate();
+        setTimeout(() =>{
+				document.getElementById('info').style.visibility = 'visible';
+				document.getElementById('nearbyObjects').style.visibility = 'visible'
+			},1000)
+    </script>
+</body>
+
+</html>
