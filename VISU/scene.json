@@ -17,6 +17,7 @@
 			{"type":"ampoule", "nom":"ampoule13","params":{"couleur":"blanc", "intensite":2.5, "portee":13.0, "attenuation":7.0}},	
 			{"type":"ampoule", "nom":"ampoule20","params":{"couleur":"Magenta", "intensite":2.5, "portee":13.0, "attenuation":7.0}},
 
+
 			{"type":"standard", "nom":"materiauBleu","params":{"couleur":"bleu"}},
 			{"type":"standard", "nom":"materiauBlanc","params":{"couleur":"blanc"}},
 			{"type":"standard", "nom":"wfRouge","params":{"couleur":"rouge"}},
@@ -66,7 +67,7 @@
 			{"type":"sol",     "nom":"sol4", "params":{"largeur":12.0,"profondeur":22.0,"materiau":"textureSol4"}},
 			{"type":"sol",     "nom":"sol5", "params":{"largeur":6.0,"profondeur":30.0,"materiau":"textureSol5"}},
 			{"type":"sol",     "nom":"sol6", "params":{"largeur":12.0,"profondeur":14,"materiau":"textureSol6"}},
-
+		
 			{"type":"poster", "nom":"poster01",
                                            "params":{"largeur":2.0, 
                                                      "hauteur":2.0,
@@ -166,19 +167,20 @@
 													"params":{"largeur":2.0, 
 													"hauteur":2.0,
 													"epaisseur":0.5,
-													"url":"assets/textures/posters/picasso5.jpg"}},	
+													"url":"assets/textures/posters/picasso4.png"}},	
 			{"type":"poster", "nom":"poster21",
 													"params":{"largeur":2.0, 
 													"hauteur":2.0,
 													"epaisseur":0.5,
-													"url":"assets/textures/posters/picasso5.jpg"}},	
+													"url":"assets/textures/posters/picasso1.jpg"}},	
 			{"type":"poster", "nom":"poster22",
 													"params":{"largeur":2.0, 
 													"hauteur":2.0,
 													"epaisseur":0.5,
 													"url":"assets/textures/posters/picasso5.jpg"}},																					
-
-
+			
+			{"type":"cube","nom" : "cube", "params" : {"largeur" : 5,	"hauteur" : 4,	"epaisseur" : 2, "materiau" : "textureDante"}},
+		
 			{"type":"texte", "nom":"texte01",
                                            "params":{"largeur":10.0, 
                                                      "hauteur":10.0,
@@ -313,15 +315,16 @@
 			{"fonc":"placerXYZ", "objet":"poster14", "params":{"x":1, "y":1.8,"z":1}},
 			{"fonc":"placerXYZ", "objet":"poster12", "params":{"x":4, "y":1.8,"z":1}},
 			{"fonc":"placerXYZ", "objet":"poster15", "params":{"x":-2, "y":1.8,"z":0.5}},
-			{"fonc":"placerXYZ", "objet":"poster16", "params":{"x":0, "y":1.8,"z":-6}},
+			{"fonc":"placerXYZ", "objet":"poster16", "params":{"x":-1, "y":1.8,"z":-6}},
 			{"fonc":"orienterY", "objet":"poster16", "params":{"angle":1.5}},
-			{"fonc":"placerXYZ", "objet":"poster17", "params":{"x":-1, "y":1.8,"z":-0.75}},
+			{"fonc":"placerXYZ", "objet":"poster17", "params":{"x":-1, "y":1.8,"z":1}},
+			{"fonc":"orienterY", "objet":"poster17", "params":{"angle":1.5}},
 			{"fonc":"placerXYZ", "objet":"poster18", "params":{"x":0, "y":1.8,"z":5}},
 			{"fonc":"orienterY", "objet":"poster18", "params":{"angle":1.5}},
-			{"fonc":"placerXYZ", "objet":"poster19", "params":{"x":3, "y":1.8,"z":4}},
-			{"fonc":"orienterY", "objet":"poster18", "params":{"angle":1.5}},
-
-
+			{"fonc":"placerXYZ", "objet":"poster19", "params":{"x":3, "y":1.8,"z":0.2}},
+			{"fonc":"placerXYZ", "objet":"poster20", "params":{"x":3, "y":1.8,"z":0.1}},
+			{"fonc":"placerXYZ", "objet":"poster21", "params":{"x":2, "y":1.8,"z":-0.5}},
+			{"fonc":"placerXYZ", "objet":"cube", "params":{"x":-15, "y":0.2,"z":-9}},
 			{"fonc":"placerXYZ", "objet":"texte01", "params":{"x":0, "y":5.0,"z":0.6}},
 			{"fonc":"orienterY", "objet":"cloison02", "params":{"angle":1.57}},
 			{"fonc":"orienterY", "objet":"cloison03", "params":{"angle":1.57}},
@@ -368,6 +371,7 @@
 			{"rel":"parentDe","sujet":"scene","objet":"ampoule12"},
 			{"rel":"parentDe","sujet":"scene","objet":"ampoule13"},
 			{"rel":"parentDe","sujet":"scene","objet":"ampoule20"},
+			{"rel":"parentDe","sujet":"scene","objet":"cube"},
 			{"rel":"parentDe","sujet":"scene","objet":"sph01"},
 			{"rel":"parentDe","sujet":"gr01","objet":"sph02"},
 			{"rel":"parentDe","sujet":"gr01","objet":"sph03"},
@@ -390,9 +394,11 @@
 			{"rel":"parentDe","sujet":"cloison09","objet":"poster15"},
 			{"rel":"parentDe","sujet":"cloison13","objet":"poster16"},
 			{"rel":"parentDe","sujet":"cloison13","objet":"poster17"},
-			{"rel":"parentDe","sujet":"cloison05","objet":"poster08"},
-			{"rel":"parentDe","sujet":"cloison05","objet":"poster19"},
-			
+			{"rel":"parentDe","sujet":"cloison03","objet":"poster08"},
+			{"rel":"parentDe","sujet":"cloison06","objet":"poster19"},
+			{"rel":"parentDe","sujet":"cloison07","objet":"poster20"},
+			{"rel":"parentDe","sujet":"cloison14","objet":"poster21"},
+
 			{"rel":"parentDe","sujet":"cloison06","objet":"texte01"},
 			{"rel":"parentDe","sujet":"scene","objet":"cloison01"},
 			{"rel":"parentDe","sujet":"scene","objet":"cloison11"},

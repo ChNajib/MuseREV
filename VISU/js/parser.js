@@ -78,14 +78,17 @@ function parser(){
 		} else
 		if (_obj.type == "cube") {
 			var materiau  = chercherDansAnnuaire(params.materiau) || materiauBlanc ;
-			createdObject = creerCube(nom,
-								params.largeur,
-								params.hauteur,
-								params.epaisseur,
-								materiau
-								);
-			enregistrerDansAnnuaire(nom, cube) ;   
+			createdObject = creerCube(nom,params.largeur,params.hauteur,params.epaisseur,materiau);
+			enregistrerDansAnnuaire(nom, poster) ; 
 		} else
+		if(_obj.type == "banc"){
+			var largeur   = 2.0 ;
+			var hauteur   = 1.0 ;
+			var profondeur= 0.65 ;
+			var materiau  = chercherDansAnnuaire(params.materiau) || materiauBlanc ;
+			createdObject   = creerBanc(hauteur, largeur, profondeur, materiau);
+			enregistrerDansAnnuaire(nom, banc) ;
+		} else 
 		if(_obj.type == "texte"){
 			var largeur = params.largeur ;
 			var hauteur = params.hauteur ; 

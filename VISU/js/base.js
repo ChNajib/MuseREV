@@ -8,6 +8,50 @@ function creerGroupe(nom){
 function creerAxes(l){
     return new THREE.AxisHelper(l) ; 
 }
+
+function creerBanc(hauteur,largeur, profondeur, materiau){
+	var bancPiedAD   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancPiedAG   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancPiedArD   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancPiedArG   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancSoutient1   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancSoutient2   = new THREE.BoxGeometry(0.1, hauteur/2, 0.1) ;
+	var bancBase  = new THREE.BoxGeometry(largeur, 0.1, profondeur) ;
+	var bancDossier  = new THREE.BoxGeometry(largeur, hauteur/2, 0.1) ;
+
+	var meshPiedAD = new THREE.Mesh(bancPiedAD, materiau) ; 
+	var meshPiedAG = new THREE.Mesh(bancPiedAG, materiau) ; 
+	var meshPiedArD = new THREE.Mesh(bancPiedArD, materiau) ; 
+	var meshPiedArG = new THREE.Mesh(bancPiedArG, materiau) ; 
+	var meshSoutient1 = new THREE.Mesh(bancSoutient1, materiau) ; 
+	var meshSoutient2 = new THREE.Mesh(bancSoutient2, materiau) ; 
+	var meshBase = new THREE.Mesh(bancBase, materiau) ; 
+	var meshDossier = new THREE.Mesh(bancDossier, materiau) ; 
+
+	placerXYZ(meshPiedAD,largeur/2-0.1,-hauteur/4,profondeur/2-0.1);
+	placerXYZ(meshPiedAG,-largeur/2+0.1,-hauteur/4,profondeur/2-0.1);
+	placerXYZ(meshPiedArD,largeur/2-0.1,-hauteur/4,-profondeur/2+0.1);
+	placerXYZ(meshPiedArG,-largeur/2+0.1,-hauteur/4,-profondeur/2+0.1);
+	placerXYZ(meshSoutient1,largeur/4,hauteur/4,profondeur/2);
+	placerXYZ(meshSoutient2,-largeur/4,hauteur/4,profondeur/2);
+	placerXYZ(meshBase,0.0,0.0,0.0);
+	placerXYZ(meshDossier,0.0,hauteur/2,profondeur/2);
+	orienterX(meshDossier,0.4);
+
+	var groupe = new THREE.Group() ; 
+	groupe.name = "banc" ;
+
+	groupe.add(meshPiedAD) ; 
+	groupe.add(meshPiedAG) ; 
+	groupe.add(meshPiedArD) ; 
+	groupe.add(meshPiedArG) ; 
+	groupe.add(meshSoutient1) ; 
+	groupe.add(meshSoutient2) ; 
+	groupe.add(meshBase) ; 
+	groupe.add(meshDossier) ; 
+	
+	return groupe ;   
+}
 	
 
 function creerSol(nom,largeur,hauteur,materiau){
@@ -47,6 +91,21 @@ function creerPoster(nom,largeur, hauteur, nomImage){
 	return mesh ;   
 }
 
+function creerPoster2(nom,largeur, hauteur, nomImage){
+	var geo   = new THREE.PlaneGeometry(largeur, hauteur) ; 
+	var mat   = creerLambertTexture(nomImage, 0xffffff) ; 
+	var mesh  = new THREE.Mesh(geo, mat) ; 
+	mesh.name = nom ;
+	return mesh ;   
+}
+
+function creerCube(nom,largeur,hauteur,epaisseur, materiau){
+	var geo  = new THREE.BoxGeometry(largeur, hauteur, epaisseur) ; 
+	var mesh = new THREE.Mesh(geo, materiau) ; 
+	mesh.name = nom ; 
+	return mesh ;  
+}
+
 function creerPoster1(nom,largeur, hauteur, nomImage){
 	var geo    = new THREE.PlaneGeometry(largeur, hauteur) ; 
 	var mat    = creerLambertTexture(nomImage, 0xffffff) ; 
@@ -82,13 +141,6 @@ function creerText(description,largeur,hauteur){
 	var material = new THREE.MeshLambertMaterial({color:0xffffff,map:texture}) ;
 	var mesh = new THREE.Mesh(geometry,material)
     return mesh;
-}
-
-function creerCube(nom,largeur,hauteur,epaisseur, materiau){
-	var geo  = new THREE.BoxGeometry(largeur, hauteur, epaisseur) ; 
-	var mesh = new THREE.Mesh(geo, materiau) ; 
-	mesh.name = nom ; 
-	return mesh ;  
 }
 
 
