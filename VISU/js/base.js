@@ -257,6 +257,10 @@ function orienterY(mesh,y){
 	mesh.rotateY(y) ; 
 }
 
+function orienterX(mesh,x){
+	mesh.rotateX(x) ; 
+}
+
 function parentDe(pere,fils){
 	pere.add(fils) ; 
 }
