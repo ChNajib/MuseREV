@@ -20,7 +20,6 @@ oReq.send() ;
 function parser(){
 
 var obj = JSON.parse(this.responseText) ; 
-console.log("==> ", obj) ; 
 data = obj ; 
 
 var objets    = data.objets ; 
@@ -41,7 +40,6 @@ for(var i=0; i<objets.length; i++){
 		
 	} else
 	if(_obj.type == "sol" ){
-		console.log("SOL : ",nom) ; 
 		var largeur    = params.largeur ;
 		var profondeur = params.profondeur ; 
 		var materiau   = chercherDansAnnuaire(params.materiau) ; 
@@ -49,8 +47,6 @@ for(var i=0; i<objets.length; i++){
 		
 	} else
 	if(_obj.type == "sphere"){
-		console.log("SPHERE : ",nom) ;
-		console.log(_obj) ;
 		var rayon    = params.rayon ; 
 		var subdiv   = params.subdivisions ;   
 		var materiau = chercherDansAnnuaire(params.materiau) ;   
@@ -97,24 +93,20 @@ for(var i=0; i<objets.length; i++){
 		finalObject = creerWireframe(colorier(params.couleur)) ; 
 	} else 
 	if(_obj.type == "lambert"){
-		console.log("LAMBERT : ", nom, params.couleur) ; 
 		finalObject = creerLambert(colorier(params.couleur)) ; 
 	} else 
 	if(_obj.type == "lambertTexture"){
 		var nx = params.nx || 1 ; 
 		var ny = params.ny || 1 ; 
 		finalObject = creerLambertTexture(params.image,colorier(params.couleur),nx, ny) ; 
-		console.log("Lambert texturé : ",materiau) ; 
 	} else
 	if(_obj.type == "standard"){
-		console.log("LAMBERT : ", nom, params.couleur) ; 
 		finalObject = creerStandard(colorier(params.couleur)) ; 
 	} else 
 	if(_obj.type == "standardTexture"){
 		var nx = params.nx || 1 ; 
 		var ny = params.ny || 1 ; 
 		finalObject = creerStandardTexture(params.image,colorier(params.couleur),nx, ny) ; 
-		console.log("Lambert texturé : ",materiau) ; 
 	} else
 	if(_obj.type == "soleil"){
 		finalObject = creerSoleil() ; 
@@ -134,18 +126,17 @@ for(var i=0; i<objets.length; i++){
 		finalObject = creerSourceAudio3d(listener,url,loop, volume, distance) ;   
 		 
 	}		
-	if (params.hasOwnProperty('comment')) {
-		finalObject.userData.comment = params.comment;
+	if (params.hasOwnProperty('description')) {
+		finalObject.userData.description = params.description;
 	}
 
-	if (params.hasOwnProperty('properName')) {
-		finalObject.userData.properName = params.properName;
+	if (params.hasOwnProperty('posterName')) {
+		finalObject.userData.posterName = params.posterName;
 	}		
 
 	enregistrerDansAnnuaire(nom,finalObject) ;
 } ; 
 
-console.log("Fin de traitement des objets") ; 
 
 for(var i=0; i<actions.length; i++){
 	_act = actions[i] ;
@@ -166,8 +157,6 @@ for(var i=0; i<relations.length; i++){
 	_rel = relations[i] ; 
 	var sujet = chercherDansAnnuaire(_rel.sujet) ; 
 	var objet = chercherDansAnnuaire(_rel.objet) ; 
-	console.log("sujet : ", sujet) ; 
-	console.log("objet : ", objet) ; 
 	if(_rel.rel == "parentDe"){
 		sujet.add(objet) ; 
 	}

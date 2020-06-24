@@ -166,9 +166,6 @@ function creerSourceAudio3d(listener, fileName, loop, volume, distance){
 	audioLoader.load(
 				fileName,
    				function(buffer){
-					//var _loop     = params["loop"]     || false ; 
-					//var _volume   = params["volume"]   || 1.0 ;
-					//var _distance = params["distance"] || 20 ;
 					sound.setBuffer(buffer) ; 
 					sound.setLoop(loop) ; 
 					sound.setVolume(volume) ;

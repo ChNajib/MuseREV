@@ -20,8 +20,6 @@ var KeyboardControls = function (object) {
 
 	this.cible = new THREE.Vector3(2, 1.7, 5);
 
-
-	var vertex = new THREE.Vector3();
 	this.plusHaut = false;
 	this.plusBas = false;
 
@@ -240,14 +238,13 @@ function keyDown(event) {
 
 
 function mouseDown(event) {
-	event.preventDefault();
+	//event.preventDefault();
 	mouse.x = 0;
 	mouse.y = 0;
 	raycaster.setFromCamera(mouse, camera);
 	var intersects = raycaster.intersectObjects(scene.children, true);
 	if (intersects.length > 0) {
-		console.log(intersects[0].object.material.color);
-		if (intersects[0].object.geometry.type == "SphereGeometry" && intersects[0].object.material.color.r == 1 && intersects[0].object.material.color.g == 1 && intersects[0].object.material.color.b == 1) {
+		if (intersects[0].object.geometry.type == "SphereGeometry" ) {
 			pointeur.position.set(intersects[0].point.x, intersects[0].point.y, +intersects[0].point.z);
 			mouseClicked = true;
 			world = intersects[0].object.matrixWorld;

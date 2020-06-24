@@ -128,7 +128,7 @@ THREE.MTLLoader.prototype = {
 
 			if ( line.length === 0 || line.charAt( 0 ) === '#' ) {
 
-				// Blank line or comment ignore
+				// Blank line or description ignore
 				continue;
 
 			}

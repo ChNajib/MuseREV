@@ -1,3 +1,71 @@
+var DisplayManager = function () {
+	var currentId = [];
+	var container = document.getElementById('nearbyObjects');
+
+	this.updateNames = function (newId) {
+		let n;
+		let actualId = [];
+		let createdId = [];
+		for (var i in newId) {
+			n = newId[i];
+			actualId.push(n);
+			if (currentId.indexOf(n) < 0){
+				createdId.push(n);
+				this.addElement(n);
+			}
+		}
+		let diff = this.arr_diff(currentId, actualId);
+		let toDelete = this.arr_diff(diff, createdId);
+
+		for (var i in toDelete) {
+			this.deleteElement(toDelete[i]);
+		}
+		currentId = actualId;
+	}
+
+
+	this.addElement = function(n){
+		let obj = scene.getObjectById(n);
+		if (obj.userData.hasOwnProperty("posterName")){
+			let div = document.createElement("div");
+			div.setAttribute("id", "name" + n);
+			div.append(obj.userData.posterName);
+			container.append(div);
+		}
+	}
+
+	this.deleteElement = function(n){
+		let div = document.getElementById('name' + n);
+		if (div) {
+			div.remove();
+		}
+
+	}
+
+	this.arr_diff = function (a1, a2) {
+
+		var a = [], diff = [];
+
+		for (var i = 0; i < a1.length; i++) {
+			a[a1[i]] = true;
+		}
+
+		for (var i = 0; i < a2.length; i++) {
+			if (a[a2[i]]) {
+				delete a[a2[i]];
+			} else {
+				a[a2[i]] = true;
+			}
+		}
+		for (var k in a) {
+			diff.push(parseInt(k));
+		}
+
+		return diff;
+	}
+
+}
+
 var Raycaster = function () {
 
 	THREE.Raycaster.apply(this,arguments);
@@ -44,11 +112,9 @@ function updateLastSeenObject(dt) {
 		lastObjectSeenTime = 0
 		info.style.opacity = 0;
 	}
-	// la on met la condition pour verifier que le visiteur a regarde l'oeuvre poendant 3 secondes, et que l'oeuvre possede la propriete comment.
-	// focusTimeThreshold egale a 2 dans index.js
-	if (lastObjectSeenTime > focusTimeThreshold && o.object.userData.hasOwnProperty('comment')){
+	if (lastObjectSeenTime > focusTimeThreshold && o.object.userData.hasOwnProperty('description')){
 		let info = document.getElementById('info')
-		info.innerText = o.object.userData.comment;
+		info.innerText = o.object.userData.description;
 		info.style.opacity = 1;
 	}
 
@@ -62,7 +128,6 @@ function updateCloseByObject() {
 	let intersect;
 	nearbyObjectsId = [];
 	for (var i in nearestObjects) {
-		console.log("nearbyobj : ",i);
 		obj = nearestObjects[i];
 		direction.subVectors(obj.worldPosition, camPos).normalize();
 		raycaster.set(camPos, direction);

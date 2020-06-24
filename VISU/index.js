@@ -8,8 +8,6 @@
 		var camControls = null;
 
 		var listener = null ;
-		var sound  = null ; 
-		var sound1 = null ; 
  
 		var controls = null ; 
 		var windowHalfX = window.innerWidth  / 2.0 ; 
@@ -29,10 +27,6 @@
 		var ray = null;
 		var lastObjectSeenID;    
 		var lastObjectSeenTime;
-
-		var params = {
-			shadows: false
-		};
 		
 		var previousShadowMap = false;
 		//#endregion
@@ -90,7 +84,6 @@
 				blocker.style.display = 'block';
 				instructions.style.display = '';
 			});
-			console.log(controls) ; 
 
 			window.addEventListener('keydown',   keyDown   ,    false) ;
 			window.addEventListener('keyup',     keyUp     ,    false) ;
